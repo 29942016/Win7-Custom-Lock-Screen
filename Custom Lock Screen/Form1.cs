@@ -14,9 +14,8 @@ namespace Custom_Lock_Screen
     public partial class Form1 : Form
     {
         Tools API = new Tools();
+        //URL to local image
         string newBackground = "";
-
-
 
         public Form1()
         {
