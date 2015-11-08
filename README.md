@@ -1,4 +1,4 @@
-# Win7-Custom-Lock-Screen
+# Windows 7 Custom Lock Screen
 
 First stable release published on 8-11-2015
 
