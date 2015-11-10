@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using Microsoft.Win32;
-namespace Custom_Lock_Screen
+namespace Custom_Lock_Screen.API
 {
     class Tools
     {
-        string backgroundDirectory, 
-               backgroundName = "\\backgroundDefault.jpg";
+        //Local path for lockscreen image (depends on cpu architecture.
+        string backgroundDirectory;
+        //Default background image.
+        string backgroundName = "\\backgroundDefault.jpg";
 
+        //Check if x64 or x86
         bool OS64 = Environment.Is64BitOperatingSystem;
 
+
+        //Sets the local path depending on x64 or x86.
         private void is64BitOS()
         {
             if (OS64)
@@ -26,34 +31,7 @@ namespace Custom_Lock_Screen
                 backgroundDirectory = Environment.GetEnvironmentVariable("windir") + @"\System32\oobe\info\backgrounds";
             }
         }
-
-        // --- Image API ---
-        private long getImageSize(string picture)
-        {
-            long size = new FileInfo(picture).Length;
-            return size;
-        }
-        public bool ImageErrorChecking(string ImageLocation)
-        {
-            bool result;
-
-            //Convert the string to lower case
-            ImageLocation = ImageLocation.ToLower();
-
-            //Check if the file is a image.
-            if ((result = new[] { ".jpg", ".gif", ".jpeg", ".png", ".bmp", ".tiff", ".exif" }.Any(ImageLocation.Contains)) == false)
-                return false;
-            //Check if the image is under 256kb
-            else if (getImageSize(ImageLocation) > 256000)
-                return false;
-            //Return that the image is correctly formatted.
-            else
-                return true;
-
-        }
-        // --- END OF IMAGE API ---
-
-        //  --- Registry API ---
+        //  Enables custom background key in registry.
         public void setOEMBackground(int enabled)
         {
             const string keyValue = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\Background";
@@ -68,8 +46,8 @@ namespace Custom_Lock_Screen
                     akey.SetValue("OEMBackground", enabled);
                       
         }
-        // --- END OF REGISTRY API---
-
+        //Looks for directory, if it can't be found, will create it,
+        //Then copy the desired image to the folder.
         public bool setBackgroundImage(string imageLocation)
         {
             is64BitOS();
@@ -90,26 +68,35 @@ namespace Custom_Lock_Screen
 
             }
 
-            //If folder exists, delete it 
+            //If folder exists, delete it.
             if (File.Exists(backgroundDirectory + backgroundName))
                 File.Delete(backgroundDirectory + backgroundName);
             
             //Copy the new image to system32\oobe\info\backgrounds\.
             try
             { 
-               
                 File.Copy(imageLocation, backgroundDirectory + backgroundName);
-                System.Diagnostics.Debug.Print(backgroundDirectory + backgroundName);
             }
             catch (Exception e)
             {
-                //Copy Failed
+                //Copy Failed.
                 System.Diagnostics.Debug.WriteLine(e.ToString());
                 return false;
             }
-
-            //Copy was successfull
+            //Copy was successfull.
             return true;
+        }
+        //Takes in any type of array and will attempt to convert all elements to a string and concat it
+        public string convertArrayToString<T>(ref T[] arr)
+        {
+            string te = "test";
+
+            foreach (T e in arr)
+            {
+                te += e.ToString();
+            }
+
+            return te;
         }
     }
 }

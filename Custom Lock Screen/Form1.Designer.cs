@@ -36,9 +36,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgFindPicture = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.lblProperties = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblProperties);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.btnSelect);
             this.groupBox1.Controls.Add(this.btnApply);
@@ -105,6 +107,16 @@
             this.groupBox1.Size = new System.Drawing.Size(406, 68);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(258, 39);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(72, 23);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // statusStrip1
             // 
@@ -124,15 +136,15 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(251, 17);
             this.toolStripStatusLabel1.Text = " Written by Obsta - Oliver.Buckler@gmail.com";
             // 
-            // btnReset
+            // lblProperties
             // 
-            this.btnReset.Location = new System.Drawing.Point(258, 39);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(72, 23);
-            this.btnReset.TabIndex = 2;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.lblProperties.AutoSize = true;
+            this.lblProperties.BackColor = System.Drawing.Color.Transparent;
+            this.lblProperties.Location = new System.Drawing.Point(4, 44);
+            this.lblProperties.Name = "lblProperties";
+            this.lblProperties.Size = new System.Drawing.Size(86, 13);
+            this.lblProperties.TabIndex = 7;
+            this.lblProperties.Text = "Image Properties";
             // 
             // Form1
             // 
@@ -150,8 +162,10 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Windows 7 Custom Lock Screen";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -171,6 +185,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label lblProperties;
     }
 }
 
