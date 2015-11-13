@@ -32,25 +32,36 @@ namespace Custom_Lock_Screen
             //Check if the user pressed 'OK' & selected a valid image
             if (diagResult == DialogResult.OK && _ImageAPI.ImageErrorChecking(dgFindPicture.FileName))
             {
-                newBackground = dgFindPicture.FileName;
-                int[] newArr = new int[2];
-
+                Tuple<int, int> dimensions = new Tuple<int, int>(0, 0); //Stores image dimensions
+                newBackground = dgFindPicture.FileName; //short hand reference for image
+                 
                 //Set display output to user
                 txtDir.Text = newBackground;
-                //lblProperties.Text = _PatchingAPI.convertArrayToString<int>(ref _ImageAPI.getImageDimensions(dgFindPicture.FileName));
+                //Set Label with image dimensions
+                dimensions = _ImageAPI.getImageDimensions(newBackground);
+                lblProperties.Text = dimensions.Item1.ToString() + 'x' + dimensions.Item2.ToString();
+                //Display image in imagebox 
                 pictureBox1.ImageLocation = newBackground;
+                //Display image is ok label
                 lblStatus.ForeColor = Color.LimeGreen;
                 lblStatus.Text = "Valid Image";
+                //Enable the apply option
                 btnApply.Enabled = true;
+                lblProperties.Visible = true;
             }
             else
             {
+                //Invalid label
                 lblStatus.Text = "Invalid image!";
                 lblStatus.ForeColor = Color.DarkRed;
+                //Disable the apply option 
                 btnApply.Enabled = false;
+                lblProperties.Visible = false;
+                //Hide display box
                 pictureBox1.Image = null;
+                //Output to user it won't work.
                 MessageBox.Show("Incorrect file.\nPlease check the image is under 256kb.", "Incorrect File.");
-              
+                
             }
         }
 
@@ -70,7 +81,9 @@ namespace Custom_Lock_Screen
         {
             _PatchingAPI.setOEMBackground(0);
             pictureBox1.Image = null;
+            lblProperties.Visible = false;
             MessageBox.Show("Lockscreen reset.", "Success.");
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

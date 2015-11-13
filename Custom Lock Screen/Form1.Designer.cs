@@ -36,10 +36,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgFindPicture = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblProperties = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblProperties = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -108,6 +108,17 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
+            // lblProperties
+            // 
+            this.lblProperties.AutoSize = true;
+            this.lblProperties.BackColor = System.Drawing.Color.Transparent;
+            this.lblProperties.Location = new System.Drawing.Point(172, 46);
+            this.lblProperties.Name = "lblProperties";
+            this.lblProperties.Size = new System.Drawing.Size(86, 13);
+            this.lblProperties.TabIndex = 7;
+            this.lblProperties.Text = "Image Properties";
+            this.lblProperties.Visible = false;
+            // 
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(258, 39);
@@ -135,16 +146,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(251, 17);
             this.toolStripStatusLabel1.Text = " Written by Obsta - Oliver.Buckler@gmail.com";
-            // 
-            // lblProperties
-            // 
-            this.lblProperties.AutoSize = true;
-            this.lblProperties.BackColor = System.Drawing.Color.Transparent;
-            this.lblProperties.Location = new System.Drawing.Point(4, 44);
-            this.lblProperties.Name = "lblProperties";
-            this.lblProperties.Size = new System.Drawing.Size(86, 13);
-            this.lblProperties.TabIndex = 7;
-            this.lblProperties.Text = "Image Properties";
             // 
             // Form1
             // 

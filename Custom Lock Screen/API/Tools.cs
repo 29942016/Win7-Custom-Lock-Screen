@@ -86,17 +86,5 @@ namespace Custom_Lock_Screen.API
             //Copy was successfull.
             return true;
         }
-        //Takes in any type of array and will attempt to convert all elements to a string and concat it
-        public string convertArrayToString<T>(ref T[] arr)
-        {
-            string te = "test";
-
-            foreach (T e in arr)
-            {
-                te += e.ToString();
-            }
-
-            return te;
-        }
     }
 }

@@ -15,16 +15,17 @@ namespace Custom_Lock_Screen.API
             long size = new FileInfo(picture).Length;
             return size;
         }
-        //Creates a array to hold the WxH extracted from image properties
-        public int[] getImageDimensions(string picture)
-        {
-            int[] dimensionArray = new int[2];
+        //Creates a Tuple to hold the WxH extracted from image properties
+        public Tuple<int,int> getImageDimensions(string picture)
+        { 
+            int w, h;
 
+            //Create Image object and apply its w+h to variables
             System.Drawing.Image img = System.Drawing.Image.FromFile(picture);
-            dimensionArray[0] = img.Width;
-            dimensionArray[1] = img.Height;
-
-            return dimensionArray;
+            w = img.Width;
+            h = img.Height;      
+             
+            return Tuple.Create(w, h);
         }
         //check if image is under 256kb and is a valid file type
         public bool ImageErrorChecking(string ImageLocation)
