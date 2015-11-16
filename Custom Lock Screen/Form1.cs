@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-
 using System.Windows.Forms;
 
+/*
+   # Final Build - 16/11/2015
+   # Oliver.Buckler@Gmail.com
+   # https://github.com/Oliver-Buckler/Win7-Custom-Lock-Screen
+*/
 
 namespace Custom_Lock_Screen
 {

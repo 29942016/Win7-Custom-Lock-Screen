@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Custom_Lock_Screen.API
@@ -15,18 +12,17 @@ namespace Custom_Lock_Screen.API
             long size = new FileInfo(picture).Length;
             return size;
         }
+
         //Creates a Tuple to hold the WxH extracted from image properties
         public Tuple<int,int> getImageDimensions(string picture)
         { 
-            int w, h;
-
-            //Create Image object and apply its w+h to variables
-            System.Drawing.Image img = System.Drawing.Image.FromFile(picture);
-            w = img.Width;
-            h = img.Height;      
+            //Create Image object from image path
+            System.Drawing.Image img = System.Drawing.Image.FromFile(picture);    
              
-            return Tuple.Create(w, h);
+            //return tuple object with image WxH properties
+            return Tuple.Create(img.Width, img.Height);
         }
+
         //check if image is under 256kb and is a valid file type
         public bool ImageErrorChecking(string ImageLocation)
         {
