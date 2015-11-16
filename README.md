@@ -10,4 +10,5 @@ Requirements:
 To-do:
 - Add a image compression/optimizer so the user doesn't have to manually compress the image to less than 256kb.
 
-
+Images:
+https://imgur.com/gallery/1HG1o/new
